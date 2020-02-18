@@ -60,8 +60,8 @@ module.exports = plop => {
 
                         actions.push({
                             type: 'add',
-                            path: 'src/{{directory}}/{{componentName}}.less',
-                            templateFile: 'plop-templates/ComponentLess.hbs'
+                            path: 'src/{{directory}}/{{componentName}}..css',
+                            templateFile: 'plop-templates/ComponentCss.hbs'
                         });
 
                         break;
@@ -82,8 +82,8 @@ module.exports = plop => {
 
                         actions.push({
                             type: 'add',
-                            path: 'src/{{directory}}/{{componentName}}.less',
-                            templateFile: 'plop-templates/ComponentLess.hbs'
+                            path: 'src/{{directory}}/{{componentName}}..css',
+                            templateFile: 'plop-templates/ComponentCss.hbs'
                         });
                         break;
                     }
@@ -103,8 +103,8 @@ module.exports = plop => {
 
                         actions.push({
                             type: 'add',
-                            path: 'src/{{directory}}/{{componentName}}.less',
-                            templateFile: 'plop-templates/ComponentLess.hbs'
+                            path: 'src/{{directory}}/{{componentName}}..css',
+                            templateFile: 'plop-templates/ComponentCss.hbs'
                         });
 
                         break;
@@ -125,8 +125,8 @@ module.exports = plop => {
 
                         actions.push({
                             type: 'add',
-                            path: 'src/{{directory}}/{{componentName}}.less',
-                            templateFile: 'plop-templates/ComponentLess.hbs'
+                            path: 'src/{{directory}}/{{componentName}}..css',
+                            templateFile: 'plop-templates/ComponentCss.hbs'
                         });
 
                         break;
