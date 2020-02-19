@@ -2,10 +2,7 @@ const promptDirectory = require('inquirer-directory');
 
 module.exports = plop => {
     function isComponent(type) {
-        return type === 'Functional Component'
-            || type === 'Classy Component'
-            || type === 'Functional Component (connected)'
-            || type === 'Classy Component (connected)';
+        return type === 'Functional Component';
     }
 
     plop.setPrompt('directory', promptDirectory);
@@ -17,13 +14,7 @@ module.exports = plop => {
                 name: 'fileType',
                 message: 'What shall we create?',
                 choices: [
-                    'actions',
-                    'entities',
                     'Functional Component',
-                    'Functional Component (connected)',
-                    'Classy Component',
-                    'Classy Component (connected)',
-                    'viewStates'
                 ]
             },
             {
@@ -45,27 +36,6 @@ module.exports = plop => {
             if (isComponent(data.fileType)) {
                 const actions = [];
                 switch (data.fileType) {
-                    case 'Classy Component': {
-                        actions.push({
-                            type: 'add',
-                            path: 'src/{{directory}}/{{componentName}}.js',
-                            templateFile: 'plop-templates/ClassyComponent.hbs'
-                        });
-
-                        actions.push({
-                            type: 'add',
-                            path: 'src/{{directory}}/{{componentName}}.test.js',
-                            templateFile: 'plop-templates/ComponentTest.hbs'
-                        });
-
-                        actions.push({
-                            type: 'add',
-                            path: 'src/{{directory}}/{{componentName}}..css',
-                            templateFile: 'plop-templates/ComponentCss.hbs'
-                        });
-
-                        break;
-                    }
 
                     case 'Functional Component': {
                         actions.push({
@@ -82,53 +52,9 @@ module.exports = plop => {
 
                         actions.push({
                             type: 'add',
-                            path: 'src/{{directory}}/{{componentName}}..css',
+                            path: 'src/{{directory}}/{{componentName}}.css',
                             templateFile: 'plop-templates/ComponentCss.hbs'
                         });
-                        break;
-                    }
-
-                    case 'Functional Component (connected)': {
-                        actions.push({
-                            type: 'add',
-                            path: 'src/{{directory}}/{{componentName}}.js',
-                            templateFile: 'plop-templates/FunctionalComponentConnected.hbs'
-                        });
-
-                        actions.push({
-                            type: 'add',
-                            path: 'src/{{directory}}/{{componentName}}.test.js',
-                            templateFile: 'plop-templates/ComponentTest.hbs'
-                        });
-
-                        actions.push({
-                            type: 'add',
-                            path: 'src/{{directory}}/{{componentName}}..css',
-                            templateFile: 'plop-templates/ComponentCss.hbs'
-                        });
-
-                        break;
-                    }
-
-                    case 'Classy Component (connected)': {
-                        actions.push({
-                            type: 'add',
-                            path: 'src/{{directory}}/{{componentName}}.js',
-                            templateFile: 'plop-templates/ClassyComponentConnected.hbs'
-                        });
-
-                        actions.push({
-                            type: 'add',
-                            path: 'src/{{directory}}/{{componentName}}.test.js',
-                            templateFile: 'plop-templates/ComponentTest.hbs'
-                        });
-
-                        actions.push({
-                            type: 'add',
-                            path: 'src/{{directory}}/{{componentName}}..css',
-                            templateFile: 'plop-templates/ComponentCss.hbs'
-                        });
-
                         break;
                     }
 
