@@ -52,7 +52,7 @@ module.exports = plop => {
 
                         actions.push({
                             type: 'add',
-                            path: 'src/{{directory}}/{{componentName}}.css',
+                            path: 'src/{{directory}}/{{componentName}}.module.css',
                             templateFile: 'plop-templates/ComponentCss.hbs'
                         });
                         break;
