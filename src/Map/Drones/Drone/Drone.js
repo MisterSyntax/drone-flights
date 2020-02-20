@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 /** styles */
@@ -6,6 +6,7 @@ import styles from './Drone.module.css';
 
 /** components */
 import { Popup, Marker } from 'react-leaflet';
+import { AppContext } from '../../../App';
 
 /** helpers */
 import { getCurrentLocation } from './helpers';
@@ -13,25 +14,40 @@ import { getCurrentLocation } from './helpers';
 export const Drone = ({
     droneId,
 }) => {
-    const [latLongAltitude, setLatLongAltitude] = useState({});
-    useEffect(() => {
+    const [latLngAltitude, setLatLngAltitude] = React.useState({});
+    const appContext = useContext(AppContext);
+
+    React.useEffect(() => {
         async function fetchData() {
-            const newLatLongAltitude = await getCurrentLocation(droneId);
-            setLatLongAltitude(newLatLongAltitude);
+            try {
+                const newLatLngAltitude = await getCurrentLocation(droneId);
+                setLatLngAltitude(newLatLngAltitude);
+            } catch (err) {
+                console.error(err);
+            }
         }
 
         fetchData();
+        const getDroneData = setInterval(fetchData, 3000);
+
+        return (() => {
+            clearInterval(getDroneData);
+        })
     }, [droneId]);
 
-    if(!latLongAltitude.lat || !latLongAltitude.lon) {
+    if (!latLngAltitude.lat || !latLngAltitude.lon) {
         return null;
     }
 
     return (
-        <Marker position={[latLongAltitude.lat, latLongAltitude.lon]}>
+        <Marker
+            position={[latLngAltitude.lat, latLngAltitude.lon]}
+            onClick={() => appContext.setActiveDroneId(droneId)}
+        >
             <Popup>
-            <b>lat</b> {latLongAltitude.lat}
-            <b>long</b> {latLongAltitude.lon}
+                <div><b>latitude</b> {latLngAltitude.lat} {' '}</div>
+                <div><b>longitude</b> {latLngAltitude.lon} {' '}</div>
+                <div><b>altitude</b> {latLngAltitude.alt}</div>
             </Popup>
         </Marker>
     );
