@@ -9,9 +9,13 @@ async function setLocation(req, res) {
         method: 'POST',
         uri: 'http://localhost:8080/SetLocation',
     };
-    await request(options);
-
-    res.sendStatus(200);
+    try{
+        await request(options);
+        res.sendStatus(200);
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
 }
 
 module.exports = setLocation;
