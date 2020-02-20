@@ -1,0 +1,10 @@
+.controls {
+    height: 20vh;
+    padding: 8px;
+    text-align: left;
+    width: 100%;
+}
+
+.header {
+    font-size: 18px;
+}
