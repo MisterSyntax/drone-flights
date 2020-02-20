@@ -13,4 +13,5 @@ In 3 seperate termnimals you'll need to run the following
 ### `yarn start`
 - fires up the app so you can fly some drones. You can view the app at http://localhost:3000/
 
-### Author - Andrew Syriala 
+### Author - Andrew Syriala
+https://github.com/MisterSyntax/drone-flights
